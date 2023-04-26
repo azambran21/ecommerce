@@ -18,23 +18,12 @@ The purpose of this project is to build an e-commerce application with technolog
   npm install
 ```
 
-4. Step into the src folder
-```bash
-  cd src
 ```
-5. Now run:
-```bash
-  npm install
-```
-6. Return to the main project folder
-```bash
-    cd ..
-```
-7. Now run the command below to deploy the server:
+4. Now run the command below to deploy the server:
 ```bash
   npm run dev
 ```
-To change the port that the server is launched on, go to /ecommerce/src/server/vite-server.ts
+To change the port that the server is launched on, go to /ecommerce/src/server/main.ts
 
 
 ## Built with
