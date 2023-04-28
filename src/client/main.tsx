@@ -9,8 +9,9 @@ import HomePage from './pages/HomePage';
 import AccountPage from './pages/AccountPage';
 import AddressesPage from './pages/AddressesPage';
 import CheckoutPage from './pages/CheckoutPage';
-import OrdersPage from './pages/OrdersPAge';
+import OrdersPage from './pages/OrdersPage';
 import PaymentMethodPage from './pages/PaymentMethodPage';
+
 import ProductPage from './pages/ProductPage' 
 import ProductSearch from './pages/ProductSearch';
 import ShoppingCartPage from './pages/ShoppingCartPage';
