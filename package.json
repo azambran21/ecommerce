@@ -37,8 +37,14 @@
     "vite-express": "*"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
     "@vitejs/plugin-react": "^3.1.0",
+    "eslint": "^8.39.0",
+    "eslint-plugin-react": "^7.32.2",
     "jest": "^29.5.0",
+    "prettier": "2.8.8",
     "tailwindcss": "^3.3.1",
     "typescript": "^5.0.4",
     "vite": "^4.2.1"
