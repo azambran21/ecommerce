@@ -11,7 +11,6 @@ import AddressesPage from './pages/AddressesPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrdersPage from './pages/OrdersPage';
 import PaymentMethodPage from './pages/PaymentMethodPage';
-
 import ProductPage from './pages/ProductPage' 
 import ProductSearch from './pages/ProductSearch';
 import ShoppingCartPage from './pages/ShoppingCartPage';
