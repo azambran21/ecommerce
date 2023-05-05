@@ -32,7 +32,7 @@ products: [{
 */
 
 // products.filter((product, i) => product[i].id === payload.id);
-const deleteProduct = (products: Product[], target:number){ 
+const deleteProduct = (products: Product[], target:number) => { 
   let newProductArray = [];
   for(let i = 0; i < products.length; i++){
     if(products[i].id !== target){
