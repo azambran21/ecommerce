@@ -13,7 +13,8 @@ type Product = {
   price: number,
   description: string,
   category: object,
-  images: string[]
+  images: string[],
+  quantity: number
 }
 
 // Define the initial state using that type
@@ -32,14 +33,29 @@ products: [{
 */
 
 // products.filter((product, i) => product[i].id === payload.id);
-const deleteProduct = (products: Product[], target:number) => { 
-  let newProductArray = [];
+const deleteProduct = (products: Product[], target:number, quantity: number, deleteCompletely: boolean) => { 
+  if(deleteCompletely){
+    //delete product from product array
+
+    return products;
+  }
   for(let i = 0; i < products.length; i++){
-    if(products[i].id !== target){
-      newProductArray.push(products[i])
+    if(products[i].id === target){
+      products[i]['quantity'] = quantity;
+      if(products[i]['quantity'] === 0){
+        //delete product from product array
+      }
     }
   }
-  return newProductArray;
+  return products;
+}
+
+const totalItems = (products: Product[]){
+  let total = 0;
+  for(let i = 0; i < products.length; i++){
+    total += products[i]['quantity'];
+  }
+  return total;
 }
 
 export const shoppingCartSlice = createSlice({
@@ -53,13 +69,22 @@ export const shoppingCartSlice = createSlice({
     decrement: (state = initialState) => {
       state.total -= 1
     },
-    addToCart: (state = initialState, action: PayloadAction<Product>) => {
+    addToCart: (state: ShoppingCartState = initialState, action: PayloadAction<Product>, quantity: number) => {
       // let newState = [...state.products]; //[...initialState.products, state]
       // newState.push(action.payload);
+      if(!action.payload['quantity']){
+        action.payload['quantity'] = quantity;
+      }
+      else{
+        action.payload['quantity'] += quantity;
+      }
+      state.total = totalItems(state.products);
       state.products.push(action.payload);
+      
     },
-    removeFromCart: (state = initialState, action: PayloadAction<Product>) => {
-      // state.products = deleteProduct(state.products, action.payload)
+    removeFromCart: (state = initialState, action: PayloadAction<number>) => {
+      state.products = deleteProduct(state.products, action.payload)
+      
     },
   },
 })
