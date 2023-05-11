@@ -33,24 +33,27 @@ products: [{
 */
 
 // products.filter((product, i) => product[i].id === payload.id);
-const deleteProduct = (products: Product[], target:number, quantity: number, deleteCompletely: boolean) => { 
-  if(deleteCompletely){
-    //delete product from product array
+const deleteProduct = (products: Product[], target:number, quantity: number, deleteCompletely: boolean = false) => { 
 
-    return products;
-  }
   for(let i = 0; i < products.length; i++){
     if(products[i].id === target){
-      products[i]['quantity'] = quantity;
-      if(products[i]['quantity'] === 0){
-        //delete product from product array
+      if(deleteCompletely){
+        products.splice(i,1);
       }
+      else{
+        products[i]['quantity'] = quantity;
+        if(products[i]['quantity'] === 0){
+        //delete product from product array
+        products.splice(i,1);
+      }
+      }
+      
     }
   }
   return products;
 }
 
-const totalItems = (products: Product[]){
+const totalItems = (products: Product[]) => {
   let total = 0;
   for(let i = 0; i < products.length; i++){
     total += products[i]['quantity'];
@@ -59,37 +62,31 @@ const totalItems = (products: Product[]){
 }
 
 export const shoppingCartSlice = createSlice({
-  name: 'shoppingCart',
+  name: 'cart',
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    increment: (state = initialState) => {
-      state.total += 1
-    },
-    decrement: (state = initialState) => {
-      state.total -= 1
-    },
     addToCart: (state: ShoppingCartState = initialState, action: PayloadAction<Product>, quantity: number) => {
       // let newState = [...state.products]; //[...initialState.products, state]
       // newState.push(action.payload);
-      if(!action.payload['quantity']){
-        action.payload['quantity'] = quantity;
+      const itemInCart = state.products.find((item) => item.id === action.payload.id);
+      if(itemInCart){
+        itemInCart.quantity += quantity;
       }
       else{
-        action.payload['quantity'] += quantity;
+        state.products.push({...action.payload, quantity: quantity});
       }
       state.total = totalItems(state.products);
-      state.products.push(action.payload);
       
     },
-    removeFromCart: (state = initialState, action: PayloadAction<number>) => {
-      state.products = deleteProduct(state.products, action.payload)
+    removeFromCart: (state = initialState, action: PayloadAction<Product>) => {
+      state.products = deleteProduct(state.products, action.payload['id'], action.payload['quantity'])
       
     },
   },
 })
 
-export const { increment, decrement, addToCart, removeFromCart } = shoppingCartSlice.actions
+export const { addToCart, removeFromCart } = shoppingCartSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectShoppingCart = (state: RootState) => state.shoppingCart.products;
