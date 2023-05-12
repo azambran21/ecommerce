@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 const HomePage = () => {
   return (
     <Layout>
-      <h1 className='bg-green'>THIS IS THE HOME PAGE</h1>
+      <h1 className='bg-green-500'>THIS IS THE HOME PAGE</h1>
     </Layout>
   )
 };
