@@ -14,7 +14,7 @@ import PaymentMethodPage from './pages/PaymentMethodPage';
 import ProductPage from './pages/ProductPage' 
 import ProductSearch from './pages/ProductSearch';
 import ShoppingCartPage from './pages/ShoppingCartPage';
-import './index.css'
+import './tailwind.css'
 const App = () =>{
     const router = createBrowserRouter([
         {
