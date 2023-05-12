@@ -1,10 +1,11 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const AddressesPage = () => {
   return (
-    <div>
+    <Layout>
       <h1>THIS IS THE ADDRESSES PAGE</h1>
-    </div>
+    </Layout>
   )
 };
 

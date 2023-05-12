@@ -1,10 +1,11 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
  const PaymentMethodPage = () => {
   return (
-    <div>
+    <Layout>
       <h1>THIS IS THE ACCOUNT PAGE</h1>
-    </div>
+    </Layout>
   )
 };
 

@@ -1,20 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
-
+import { Product } from '../../../types'
 // Define a type for the slice state
 interface ShoppingCartState {
   products: Product[],
   total: number
-}
-type Product = {
-  id:number,
-  title: string,
-  price: number,
-  description: string,
-  category: object,
-  images: string[],
-  quantity: number
 }
 
 // Define the initial state using that type
@@ -22,15 +13,6 @@ const initialState: ShoppingCartState = {
   products: [],
   total: 0
 }
-/*
-products: [{
-    name: '',
-    description: '',
-    price: 0.00,
-    qty: 0
-  }],
-  total: 0
-*/
 
 // products.filter((product, i) => product[i].id === payload.id);
 const deleteProduct = (products: Product[], target:number, quantity: number, deleteCompletely: boolean = false) => { 
