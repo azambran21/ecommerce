@@ -8,8 +8,11 @@ const Navbar = () => {
       <div className="flex flex-row justify-between text-xl">
         <HomeButton />
         <SearchBar />
-        <AccountButton />
-        <ShoppingCartButton />
+        <div>
+          <AccountButton />
+          <ShoppingCartButton />
+        </div>
+        
       </div>
     </nav>
   )
