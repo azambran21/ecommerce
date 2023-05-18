@@ -1,7 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Layout from '../components/Layout';
+import { getAllProducts } from '../features/product/productSlice';
 
 const HomePage = () => {
+
+  async function getProductsHelper() {
+    const allProdcuts = await getAllProducts();
+    console.log(allProdcuts);
+  }
+  useEffect(() => {
+    getProductsHelper();
+  }, []);
+
   return (
     <Layout>
       <h1 className='bg-green-500 text-2xl py-8'>THIS IS THE HOME PAGE</h1>
