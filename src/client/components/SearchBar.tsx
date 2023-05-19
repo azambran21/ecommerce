@@ -5,8 +5,8 @@ const SearchBar = () => {
   return (
     <div className="form-control">
       <div className="input-group">
-        <select className="select select-bordered">
-          <option disabled selected>Pick category</option>
+        <select defaultValue={''} className="select select-bordered">
+          <option>Pick category</option>
           <option>T-shirts</option>
           <option>Mugs</option>
         </select>
